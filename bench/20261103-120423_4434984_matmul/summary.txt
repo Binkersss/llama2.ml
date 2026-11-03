@@ -1,0 +1,14 @@
+version:         4434984 (4434984b947f872a0a3d17a91996e308575a4a6b)
+hyperfine mean:  3.460 s    min: ? s
+achieved tok/s: 29.81
+peak memory:         273500  maximum resident set size
+correctness:     output matches bench/reference.txt
+--- GC ---
+minor_words: 139807333
+promoted_words: 523560
+major_words: 399961284
+minor_collections: 567
+major_collections: 34
+forced_major_collections: 0
+heap_words: 32533829
+top_heap_words: 34042595

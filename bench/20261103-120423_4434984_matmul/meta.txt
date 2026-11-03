@@ -1,0 +1,14 @@
+date:        Tue Nov  3 12:04:23 PST 2026
+commit:      4434984b947f872a0a3d17a91996e308575a4a6b
+dirty:       no
+label:       matmul
+model:       stories15M.bin (60816028 bytes)
+steps:       64
+temperature: 0.0
+hyperfine:   runs=5 warmup=1
+ocaml:       5.5.0
+uname:       OpenBSD stealth.chappelle.dev 8.0 GENERIC.MP#123 amd64
+cpu:         Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz
+ncpu:        8
+perfpolicy:  high
+cpuspeed:    1501 MHz

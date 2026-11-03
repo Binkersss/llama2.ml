@@ -32,3 +32,36 @@ top_heap_words: 34352687
 
 results in bench/20261103-115212_4804abb-dirty/
 hw.perfpolicy: high -> auto
+
+------------------
+Matmul Improvement
+------------------
+hw.perfpolicy: auto -> high
+== building (4434984) ==
+== hyperfine: 5 runs, 1 warmup ==
+Benchmark 1: 4434984 (5 runs)
+                  mean ±     σ    min …   max
+  Wall Time [s]  3.460 ± 0.057  3.406 … 3.538
+  Memory [MiB]   267.3 ±   0.3  267.1 … 267.8
+
+== instrumented run (output + GC stats) ==
+== time -l run ==
+version:         4434984 (4434984b947f872a0a3d17a91996e308575a4a6b)
+hyperfine mean:  3.460 s    min: ? s
+achieved tok/s: 29.81
+peak memory:         273500  maximum resident set size
+correctness:     output matches bench/reference.txt
+--- GC ---
+minor_words: 139807333
+promoted_words: 523560
+major_words: 399961284
+minor_collections: 567
+major_collections: 34
+forced_major_collections: 0
+heap_words: 32533829
+top_heap_words: 34042595
+
+results in bench/20261103-120423_4434984_matmul/
+hw.perfpolicy: high -> auto
+
+
