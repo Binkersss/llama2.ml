@@ -12,7 +12,7 @@ First, navigate to the folder when you keep your projects and clone this reposit
 
 
 ```bash
-git clone https://github.com/jackpeck/llama2.ml.git
+git clone https://github.com/Binkerss/llama2.ml.git
 ```
 
 Then, open the repository folder:
@@ -30,7 +30,8 @@ wget https://huggingface.co/karpathy/tinyllamas/resolve/main/stories15M.bin
 Run the OCaml code:
 
 ```bash
-ocaml llama2.ml stories15M.bin
+dune build --release llama2.exe 
+./_build/default/llama2.exe stories15M.bin
 ```
 > Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, she saw a big, red ball in the sky. It was the sun! She thought it was so pretty.
 Lily wanted to play with the ball, but it was too high up in the sky. She tried to jump and reach it, but she couldn't. Then, she had an idea. She would use a stick to knock the ball down.

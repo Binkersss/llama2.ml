@@ -1,0 +1,5 @@
+(executable
+  (name llama2)
+  (libraries unix)
+  (flags (:standard -w -a))
+  (ocamlopt_flags (:standard -unsafe -inline 200)))
