@@ -1,0 +1,37 @@
+diff --git a/llama2.ml b/llama2.ml
+index 3e997dc..39278a3 100644
+--- a/llama2.ml
++++ b/llama2.ml
+@@ -329,7 +329,7 @@ let bpe_encode text vocab vocab_scores =
+   in
+   merge_tokens tokens vocab vocab_scores
+ 
+-let rmsnorm out x weight =
++let rmsnorm out x weight woff size =
+   let size = Array.length x in
+   let ss =
+     (Array.fold_left (fun acc elem -> acc +. (elem *. elem)) 0.0 x /. float size)
+@@ -338,13 +338,16 @@ let rmsnorm out x weight =
+   let ss = 1.0 /. sqrt ss in
+   Array.mapi (fun i elem -> weight.(i) *. ss *. elem) x
+ 
+-let matmul xout x w n d =
+-  Array.init d (fun i ->
+-      let val' =
+-        Array.init n (fun j -> w.((i * n) + j) *. x.(j))
+-        |> Array.fold_left ( +. ) 0.0
+-      in
+-      val')
++(* xout.(0..d-1) <- W[off ..] (d x n, row-major) * x.(0..n-1) *)
++let matmul xout x w off n d =
++  for i = 0 to d - 1 do
++    let acc = ref 0.0 in
++    let base = off + i * n in
++    for j = 0 to n - 1 do
++      acc := !acc +. w.(base + j) *. x.(j)
++    done;
++    xout.(i) <- !acc
++  done
+ 
+ let dot_product arr1 arr2 =
+   let multiplied = Array.map2 ( *. ) arr1 arr2 in

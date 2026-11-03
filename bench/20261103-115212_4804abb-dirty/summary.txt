@@ -1,0 +1,14 @@
+version:         4804abb-dirty (4804abb4a068261c051e8de4ce200ac18dd143c6)
+hyperfine mean:  32.095 s    min: ? s
+achieved tok/s: 2.21
+peak memory:         385948  maximum resident set size
+correctness:     saved as new bench/reference.txt (first run)
+--- GC ---
+minor_words: 5994339047
+promoted_words: 651736
+major_words: 1378503732
+minor_collections: 22928
+major_collections: 114
+forced_major_collections: 0
+heap_words: 32655807
+top_heap_words: 34352687
