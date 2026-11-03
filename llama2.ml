@@ -338,13 +338,18 @@ let rmsnorm out x weight =
   let ss = 1.0 /. sqrt ss in
   Array.mapi (fun i elem -> weight.(i) *. ss *. elem) x
 
+(* xout.(0..d-1) <- W[off ..] (d x n, row-major) * x.(0..n-1) *)
 let matmul xout x w n d =
-  Array.init d (fun i ->
-      let val' =
-        Array.init n (fun j -> w.((i * n) + j) *. x.(j))
-        |> Array.fold_left ( +. ) 0.0
-      in
-      val')
+  for i = 0 to d - 1 do
+    let acc = ref 0.0 in
+    let base = i * n in
+    for j = 0 to n - 1 do
+      acc := !acc +. w.(base + j) *. x.(j)
+    done;
+    xout.(i) <- !acc
+  done;
+  xout
+;;
 
 let dot_product arr1 arr2 =
   let multiplied = Array.map2 ( *. ) arr1 arr2 in
